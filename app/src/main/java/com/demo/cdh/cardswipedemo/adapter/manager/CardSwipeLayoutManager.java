@@ -36,8 +36,8 @@ public class CardSwipeLayoutManager extends RecyclerView.LayoutManager {
             measureChildWithMargins(child, 0, 0);
             //获取child外边距=(recyclerview的宽度-child包含了decorate间距的总宽度) / 2
             int widthSpace = (getWidth()-getDecoratedMeasuredWidth(child)) / 2;
-//            int heightSpace = (getHeight()-getDecoratedMeasuredHeight(child)) / 2;//上下居中
-            int heightSpace=60;
+            int heightSpace = (getHeight()-getDecoratedMeasuredHeight(child)) / 2;//上下居中
+//            int heightSpace=60;
             //摆放child的位置
             layoutDecorated(child, widthSpace, heightSpace,
                     widthSpace+getDecoratedMeasuredWidth(child),
@@ -50,7 +50,9 @@ public class CardSwipeLayoutManager extends RecyclerView.LayoutManager {
 //                fraction = count - 2;
                 fraction = count - 1;
             }
-            child.setTranslationY(CardConfig.TRANS_Y_GAP * fraction);
+            //设置Y轴偏移
+            child.setTranslationY(CardConfig.TRANS_Y_GAP * fraction);////底部错落样式
+//            child.setTranslationY(-CardConfig.TRANS_Y_GAP * fraction);//顶部错落样式
             child.setScaleX(1 - CardConfig.SCALE_GAP*fraction);
             child.setScaleY(1 - CardConfig.SCALE_GAP*fraction);
         }
@@ -68,7 +70,7 @@ public class CardSwipeLayoutManager extends RecyclerView.LayoutManager {
         public static void init(Context context) {
             CARD_SHOW_COUNT = 3;
             SCALE_GAP = 0.08f;
-            TRANS_Y_GAP = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, context.getResources().getDisplayMetrics());
+            TRANS_Y_GAP = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 35, context.getResources().getDisplayMetrics());
         }
     }
 }

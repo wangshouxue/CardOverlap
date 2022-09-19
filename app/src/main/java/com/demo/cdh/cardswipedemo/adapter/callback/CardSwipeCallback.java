@@ -34,7 +34,7 @@ public class CardSwipeCallback extends ItemTouchHelper.Callback {//ItemTouchHelp
     }
     @Override
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-        if (adapter.getItemCount()+1==viewHolder.getLayoutPosition()){
+        if (adapter.getItemCount()-1==viewHolder.getLayoutPosition()){
             //最后一个item不可滑动
             return 0;
         }
@@ -86,7 +86,7 @@ public class CardSwipeCallback extends ItemTouchHelper.Callback {//ItemTouchHelp
         //设置滑动临界值，避免无限偏移缩放
         double maxDistance = recyclerView.getWidth() / 2;
         //当前滑动距离
-        double distance = Math.sqrt(dX*dX + dX*dX);
+        double distance = Math.sqrt(dX*dX + dY*dY);
         //计算比例
         double ratio = distance / maxDistance;
         if(ratio > 1) {

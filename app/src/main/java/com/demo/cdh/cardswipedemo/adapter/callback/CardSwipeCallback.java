@@ -103,6 +103,7 @@ public class CardSwipeCallback extends ItemTouchHelper.Callback {//ItemTouchHelp
             if(level != count-1) {
                 //在原来的位置下加上偏移量
                 child.setTranslationY((float) (CardConfig.TRANS_Y_GAP * (level-ratio)));
+//                child.setTranslationY(-(float) (CardSwipeLayoutManager.CardConfig.TRANS_Y_GAP * (level-ratio)));//顶部错落
                 child.setScaleX((float) (1 - CardConfig.SCALE_GAP * level + CardConfig.SCALE_GAP*ratio));
                 child.setScaleY((float) (1 - CardConfig.SCALE_GAP * level + CardConfig.SCALE_GAP*ratio));
             }
